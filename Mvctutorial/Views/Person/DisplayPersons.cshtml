@@ -1,0 +1,48 @@
+@model IEnumerable<Mvctutorial.Models.Domain.Person>;
+
+@{
+    ViewData["Title"] = "Display Persons";
+}
+
+<div class="mt-2 w-50" >
+    <div class="row">
+        <div class="col-md -4">
+            <h2>Persons</h2>
+
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                       Name
+                    </th>
+                
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                
+            </thead>
+             <tbody>
+            @foreach (var person in Model)
+            { 
+                <tr>              
+                <td>
+                    <a asp-action="PersonDetail" asp-controller="person" asp-route-id="@person.Id">
+                    @person.Name
+                    </a>
+                </td>
+                <td>
+                    @person.Email
+                </td> 
+                <td>
+                    <a asp-action="EditPerson" asp-controller="Person" asp-route-id="@person.Id" class="btn btn-success">Edit</a> |
+                    <a asp-action="DeletePerson" asp-controller="Person" asp-route-id="@person.Id" class="btn btn-danger">Delete</a> |
+                </td>
+                </tr>          
+            }
+            </tbody>
+            
+        </table>
+    </div>
+
+</div>

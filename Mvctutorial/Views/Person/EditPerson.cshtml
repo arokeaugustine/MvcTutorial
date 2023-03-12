@@ -1,0 +1,37 @@
+@model Mvctutorial.Models.Domain.Person;
+
+@{
+    ViewData["Title"] = "Edit Page";
+}
+<h3>
+  Edit Person
+</h3>
+<div class="container mt-5 w-50">
+    
+<form asp-action="EditPerson">
+  <input type="hidden" asp-for="Id" class="form-control">
+  <div class="form-group">
+    <div>
+        <span asp-for="Name" class="form-label">Name</span>
+        <input asp-for="Name" type="text" class="form-control" placeholder="Enter Name">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <span asp-for="Email" class="form-label">Email</span>
+        <input asp-for="Email" type="text" class="form-control mt-2"  placeholder="Email">
+         <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    
+    
+  </div>
+  @if(TempData["message"] != null)
+  {
+    <div>
+      @TempData["message"] 
+    </div>
+  }
+  <button type="submit" class="btn btn-primary mt-2">Update</button>
+</form>
+
+</div>
